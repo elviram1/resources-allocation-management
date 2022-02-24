@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1>Resources</h1>
+<body>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Initials</th>
+            <th>Level</th>
+            <th>Internal/External</th>
+            <th>Daily hours</th>
+            <th>Metadata</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="resource: ${resources}">
+            <td th:text="${resource.id}" ></td>
+            <td th:text="${resource.name}"></td>
+            <td th:text="${resource.surname}" ></td>
+            <td th:text="${resource.initials}" ></td>
+            <td th:text="${resource.level}" ></td>
+            <td th:text="${resource.internalExternal}" ></td>
+            <td th:text="${resource.dailyHours}" ></td>
+            <td th:text="${resource.metadata}" ></td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
