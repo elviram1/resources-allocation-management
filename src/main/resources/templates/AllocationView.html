@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1>Allocations</h1>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ID resource</th>
+        <th>ID project</th>
+        <th>ID resource followed</th>
+        <th>Start Data</th>
+        <th>End Data</th>
+        <th>Percentage of engagement</th>
+        <th>Support</th>
+        <th>Investment</th>
+        <th>Hypothesis</th>
+        <th>Metadata</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allocation: ${allocations}">
+        <td th:text="${allocation.id}" ></td>
+        <td th:text="${allocation.resource.id}"></td>
+        <td th:text="${allocation.project?.id}" ></td>
+        <td th:text="${allocation.resourceFollowed?.id}" ></td>
+        <td th:text="${allocation.startDate}" ></td>
+        <td th:text="${allocation.endDate}" ></td>
+        <td th:text="${allocation.percentageOfEngagement}" ></td>
+        <td th:text="${allocation.support}"></td>
+        <td th:text="${allocation.investment}"></td>
+        <td th:text="${allocation.hypothesis}"></td>
+        <td th:text="${allocation.metadata}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

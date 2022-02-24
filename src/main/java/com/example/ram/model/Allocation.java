@@ -7,8 +7,9 @@ import java.sql.Date;
 @Table(name = "allocation")
 public class Allocation {
 
-    @EmbeddedId
-    private AllocationKey allocationKey;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     private Date startDate;
     private Date endDate;
@@ -25,11 +26,15 @@ public class Allocation {
     private Resource resource;
 
     @ManyToOne
-    @JoinColumn(name = "id_assignment", referencedColumnName = "id", insertable=false, updatable=false)
+    @JoinColumn(name = "id_resource_followed", referencedColumnName = "id", insertable=false, updatable=false)
+    private Resource resourceFollowed;
+
+    @ManyToOne
+    @JoinColumn(name = "id_project", referencedColumnName = "id", insertable=false, updatable=false)
     private Project project;
 
-    public Allocation(AllocationKey allocationKey, Date startDate, Date endDate, int percentageOfEngagement, boolean investment, boolean support, boolean hypothesis, String metadata) {
-        this.allocationKey = allocationKey;
+    public Allocation(long id, Date startDate, Date endDate, int percentageOfEngagement, boolean investment, boolean support, boolean hypothesis, String metadata, Resource resource, Resource resourceFollowed, Project project) {
+        this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.percentageOfEngagement = percentageOfEngagement;
@@ -37,18 +42,21 @@ public class Allocation {
         this.support = support;
         this.hypothesis = hypothesis;
         this.metadata = metadata;
+        this.resource = resource;
+        this.resourceFollowed = resourceFollowed;
+        this.project = project;
     }
 
     public Allocation() {
 
     }
 
-    public AllocationKey getAllocationKey() {
-        return allocationKey;
+    public long getId() {
+        return id;
     }
 
-    public void setAllocationKey(AllocationKey allocationKey) {
-        this.allocationKey = allocationKey;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public Date getStartDate() {
@@ -105,5 +113,29 @@ public class Allocation {
 
     public void setMetadata(String metadata) {
         this.metadata = metadata;
+    }
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
+
+    public Resource getResourceFollowed() {
+        return resourceFollowed;
+    }
+
+    public void setResourceFollowed(Resource resourceFollowed) {
+        this.resourceFollowed = resourceFollowed;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
