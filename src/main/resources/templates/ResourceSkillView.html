@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1>Resources Skills</h1>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID Resource</th>
+        <th>ID skill</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="resourceSkill: ${resourceSkills}">
+        <td th:text="${resourceSkill.resourceSkillKey.idResource}" ></td>
+        <td th:text="${resourceSkill.resourceSkillKey.idSkill}"></td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
