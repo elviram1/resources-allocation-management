@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<h1>Technical Skills</h1>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Skill</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="techinalSkill: ${techinalSkills}">
+        <td th:text="${techinalSkill.id}" ></td>
+        <td th:text="${techinalSkill.skill}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
