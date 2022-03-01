@@ -13,13 +13,15 @@ public class ProjectGroup {
     private long id;
 
     private String agency;
+    private String color;
 
     @OneToMany(mappedBy = "projectGroup")
     private Set<Project> projects;
 
-    public ProjectGroup(long id, String agency) {
+    public ProjectGroup(long id, String agency, String color) {
         this.id = id;
         this.agency = agency;
+        this.color = color;
     }
 
     public ProjectGroup() {
@@ -40,5 +42,13 @@ public class ProjectGroup {
 
     public void setAgency(String agency) {
         this.agency = agency;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 }
