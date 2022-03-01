@@ -1,92 +1,106 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
 
-<div th:replace="fragments :: menu"></div>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
 
-<body>
-<h2>Project groups</h2>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Project Group</button>
-<table class="table table-stripped">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Agency</th>
-        <th>Color</th>
-        <td>Action</td>
-    </tr>
-    </thead>
-    <tr th:each="projectGroup: ${projectGroups}">
-        <td th:text="${projectGroup.id}" >id</td>
-        <td th:text="${projectGroup.agency}" >agency</td>
-        <td th:text="${projectGroup.color}" >color</td>
-        <td> <a th:href="@{/showUpdateForm/{id}(id=${projectGroup.id})}" class="btn btn-warning" data-toggle="modal" data-target="#editModal">Edit</a></td>
-    </tr>
-</table>
-<!-- Add modal  -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <form th:action="@{/project-groups/addNew}" method="post">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">New project group</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Agency:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="agency">
+    <body>
+        <div th:replace="fragments :: menu"></div>
+        <h2>Project groups</h2>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add Project Group</button>
+        <table class="table table-stripped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Agency</th>
+                <th>Color</th>
+                <td>Action</td>
+            </tr>
+            </thead>
+            <tr th:each="projectGroup: ${projectGroups}">
+                <td th:text="${projectGroup.id}">id</td>
+                <td th:text="${projectGroup.agency}">agency</td>
+                <td th:text="${projectGroup.color}">color</td>
+                <td><a data-toggle="modal" title="Edit project group" class="open-edit-modal btn btn-warning" href="#editModal"
+                       th:attr="data-id=${projectGroup.id}, data-agency=${projectGroup.agency}, data-color=${projectGroup.color}">Edit</a></td>
+            </tr>
+        </table>
+
+        <!-- Add modal  -->
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form th:action="@{/project-groups/addNew}" method="post">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New project group</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Agency:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="agency">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Color:</label>
+                                <input type="text" class="form-control" id="recipient-name" name="color">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Color:</label>
-                        <input type="text" class="form-control" id="recipient-name" name="color">
-                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
+            </form>
         </div>
-    </form>
-</div>
-<!-- Edit modal  -->
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    <form th:action="@{/project-groups/update/{id}}"  method="post">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit project group</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Agency:</label>
-                        <input type="text" th:field="*{agency}" class="form-control" id="recipient-name" name="agencyEdit">
-                    </div>
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Color:</label>
-                        <input type="text" th:field="*{color}" class="form-control" id="recipient-name" name="colorEdit">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
 
-</body>
+        <!-- Edit modal  -->
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <form th:action="@{/project-groups/update}" method="post">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Edit project group</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Id:</label>
+                                <input type="text" class="form-control" id="editProjectGroupId" name="id" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Agency:</label>
+                                <input type="text" class="form-control" id="editProjectGroupAgency" name="agency">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Color:</label>
+                                <input type="text" class="form-control" id="editProjectGroupColor" name="color">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script>
+            $(document).on("click", ".open-edit-modal", function () {
+                $(".modal-body #editProjectGroupId").val($(this).data('id'));
+                $(".modal-body #editProjectGroupAgency").val($(this).data('agency'));
+                $(".modal-body #editProjectGroupColor").val($(this).data('color'));
+            });
+        </script>
+    </body>
 </html>
