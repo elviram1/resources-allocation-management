@@ -3,40 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         .vertical-menu {
             width: 200px;
         }
-
         .vertical-menu a {
             color: black;
             display: block;
             padding: 12px;
             text-decoration: none;
         }
-
         .vertical-menu a:hover {
             background-color: #ccc;
         }
-
         .vertical-menu a.active {
             background-color: #04AA6D;
             color: white;
         }
     </style>
-
 </head>
-
 <body>
-    <div class="vertical-menu" th:href="@{/index}">
-        <a href="" class="active">Home</a>
-        <a th:href="@{/projects}">Projects</a>
-        <a th:href="@{/resources}">Resources</a>
-        <a th:href="@{/technical-skills}">Skillset</a>
-        <a th:href="@{/allocations}">Resources allocations</a>
-        <a th:href="@{/resourses-skills}">Resources skills</a>
-    </div>
-
+<div class="vertical-menu" th:href="@{/index}">
+    <a href="" class="active">Home</a>
+    <a th:href="@{/project-groups}">Project Groups</a>
+    <a th:href="@{/projects}">Projects</a>
+    <a th:href="@{/resources}">Resources</a>
+    <a th:href="@{/technical-skills}">Skillset</a>
+    <a th:href="@{/allocations}">Resources allocations</a>
+    <a th:href="@{/resourses-skills}">Resources skills</a>
+</div>
 </body>
 </html>

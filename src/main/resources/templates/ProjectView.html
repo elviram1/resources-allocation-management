@@ -3,34 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
-<h1>Projects</h1>
+
+<div th:replace="fragments :: menu"></div>
+
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>ID Group</th>
-                <th>Name</th>
-                <th>Start Date</th>
-                <th>End Data</th>
-                <th>FTE required</th>
-                <th>Metadata</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="project: ${projects}">
-                <td th:text="${project.id}" ></td>
-                <td th:text="${project.projectGroup.id}"></td>
-                <td th:text="${project.name}" ></td>
-                <td th:text="${project.startDate}" ></td>
-                <td th:text="${project.endDate}" ></td>
-                <td th:text="${project.fteRequired}" ></td>
-                <td th:text="${project.metadata}" ></td>
-            </tr>
-        </tbody>
-    </table>
-
-
+<h2>Projects</h2>
+<table class="table table-stripped">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ID Group</th>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Data</th>
+        <th>FTE required</th>
+        <th>Metadata</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="project: ${projects}">
+        <td th:text="${project.id}" ></td>
+        <td th:text="${project.projectGroup.id}"></td>
+        <td th:text="${project.name}" ></td>
+        <td th:text="${project.startDate}" ></td>
+        <td th:text="${project.endDate}" ></td>
+        <td th:text="${project.fteRequired}" ></td>
+        <td th:text="${project.metadata}" ></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

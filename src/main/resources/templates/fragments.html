@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fragments</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+<div th:fragment="menu">
+
+    <nav class="navbar navbar-blue">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a th:href="@{/project-groups}">Project Groups</a></li>
+                <li><a th:href="@{/projects}">Projects</a></li>
+                <li><a th:href="@{/resources}">Resources</a></li>
+                <li><a th:href="@{/technical-skills}">Skillset</a></li>
+                <li><a th:href="@{/allocations}">Resources allocations</a></li>
+                <li><a th:href="@{/resourses-skills}">Resources skills</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+</body>
+</html>

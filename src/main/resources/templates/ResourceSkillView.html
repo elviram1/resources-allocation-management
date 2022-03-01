@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
-<h1>Resources Skills</h1>
+
+<div th:replace="fragments :: menu"></div>
+
 <body>
-<table>
+<h2>Resources Skills</h2>
+<table class="table table-stripped">
     <thead>
     <tr>
         <th>ID Resource</th>
@@ -17,10 +21,8 @@
     <tr th:each="resourceSkill: ${resourceSkills}">
         <td th:text="${resourceSkill.resourceSkillKey.idResource}" ></td>
         <td th:text="${resourceSkill.resourceSkillKey.idSkill}"></td>
-
     </tr>
     </tbody>
 </table>
-
 </body>
 </html>
