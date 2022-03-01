@@ -26,15 +26,19 @@ public class ProjectGroupService {
     public void addProjectGroup(ProjectGroup projectGroup){
         projectGroupRepository.save(projectGroup);
     }
-
-    public void updateProjectGroup(long id, ProjectGroup updateProjectGroup){
+/*
+    public void addOrUpdateProjectGroup(long id, ProjectGroup updateProjectGroup){
         Optional<ProjectGroup> projectGroup = projectGroupRepository.findById(id);
         if(projectGroup.isPresent()){
             projectGroup.get().setAgency(updateProjectGroup.getAgency());
             projectGroup.get().setColor(updateProjectGroup.getColor());
             projectGroupRepository.save(projectGroup.get());
         }else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);*/
+
+
+    public void addOrUpdateProjectGroup(ProjectGroup projectGroup){
+        projectGroupRepository.save(projectGroup);
 
     }
 
@@ -43,7 +47,9 @@ public class ProjectGroupService {
             return projectGroupRepository.findById(id);
         }else
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
 
-
+    public void deleteProjectGroup(ProjectGroup projectGroup){
+        projectGroupRepository.delete(projectGroup);
     }
 }
