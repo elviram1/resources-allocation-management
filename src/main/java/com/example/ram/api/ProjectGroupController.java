@@ -30,15 +30,9 @@ public class ProjectGroupController {
         return mav;
     }
 
-    @PostMapping("/addNew")
+    @PostMapping("/addOrUpdate")
     public String addProjectGroup(ProjectGroup projectGroup){
-        projectGroupService.addProjectGroup(projectGroup);
-        return "redirect:/project-groups";
-    }
-
-    @PostMapping(path = "/update/{id}")
-    public String updateProjectGroup(@PathVariable("id") String id,  ProjectGroup projectGroup, Model model){
-        projectGroupService.updateProjectGroup(Long.valueOf(id), projectGroup);
+        projectGroupService.addOrUpdateProjectGroup(projectGroup);
         return "redirect:/project-groups";
     }
 
