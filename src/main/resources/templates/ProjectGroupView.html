@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="../static/main.js" th:src="@{/main.js}"></script>
     </head>
 
     <body>
@@ -28,16 +29,19 @@
                 <td th:text="${projectGroup.color}">color</td>
                 <td><a data-toggle="modal" title="Edit project group" class="open-edit-modal btn btn-warning" href="#editModal"
                        th:attr="data-id=${projectGroup.id}, data-agency=${projectGroup.agency}, data-color=${projectGroup.color}">Edit</a></td>
+                    <a data-toggle="modal" title="Delete project group" class="open-delete-modal btn btn-danger" href="#deleteModal"
+                      th:attr="data-id=${projectGroup.id}, data-agency=${projectGroup.agency}, data-color=${projectGroup.color}">Delete</a>
+                </td>
             </tr>
         </table>
 
         <!-- Add modal  -->
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <form th:action="@{/project-groups/addNew}" method="post">
+            <form th:action="@{/project-groups/addOrUpdate}" method="post">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">New project group</h5>
+                            <h5 class="modal-title" id="addModalLabel">New project group</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -63,7 +67,7 @@
 
         <!-- Edit modal  -->
         <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-            <form th:action="@{/project-groups/update}" method="post">
+            <form th:action="@{/project-groups/addOrUpdate}" method="post">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -95,12 +99,40 @@
             </form>
         </div>
 
-        <script>
-            $(document).on("click", ".open-edit-modal", function () {
-                $(".modal-body #editProjectGroupId").val($(this).data('id'));
-                $(".modal-body #editProjectGroupAgency").val($(this).data('agency'));
-                $(".modal-body #editProjectGroupColor").val($(this).data('color'));
-            });
-        </script>
+        <!--Delete modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <form th:action="@{/project-groups/delete}" method="post">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deletetModalLabel">Delete project group</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Id:</label>
+                                <input type="text" class="form-control" id="deleteProjectGroupId" name="id" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Agency:</label>
+                                <input type="text" class="form-control" id="deleteProjectGroupAgency" name="agency"readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Color:</label>
+                                <input type="text" class="form-control" id="deleteProjectGroupColor" name="color"readonly>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
     </body>
 </html>

@@ -36,13 +36,11 @@ public class ProjectGroupController {
         return "redirect:/project-groups";
     }
 
-    /*@GetMapping("/showUpdateForm/{id}")
-    public String showUpdateForm(@PathVariable("id") long id, Model model){
-        Optional<ProjectGroup> projectGroup = projectGroupService.getProjectGroupById(id);
-        model.addAttribute("projectGroup", projectGroup);
+    @PostMapping("/delete")
+    public String deleteProjectGroup(ProjectGroup projectGroup){
+        projectGroupService.deleteProjectGroup(projectGroup);
         return "redirect:/project-groups";
-
-    }*/
+    }
 
 
 
