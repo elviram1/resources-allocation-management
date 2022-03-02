@@ -27,7 +27,8 @@
                 <td th:text="${projectGroup.id}">id</td>
                 <td th:text="${projectGroup.agency}">agency</td>
                 <td th:text="${projectGroup.color}">color</td>
-                <td><a data-toggle="modal" title="Edit project group" class="open-edit-modal btn btn-warning" href="#editModal"
+                <td>
+                    <a data-toggle="modal" title="Edit project group" class="open-edit-modal btn btn-warning" href="#editModal"
                        th:attr="data-id=${projectGroup.id}, data-agency=${projectGroup.agency}, data-color=${projectGroup.color}">Edit</a></td>
                     <a data-toggle="modal" title="Delete project group" class="open-delete-modal btn btn-danger" href="#deleteModal"
                       th:attr="data-id=${projectGroup.id}, data-agency=${projectGroup.agency}, data-color=${projectGroup.color}">Delete</a>
