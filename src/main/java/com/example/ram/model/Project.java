@@ -1,5 +1,8 @@
 package com.example.ram.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
@@ -21,7 +24,8 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String metadata;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_group", referencedColumnName = "id")
     private ProjectGroup projectGroup;
 
