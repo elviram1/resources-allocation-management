@@ -1,5 +1,7 @@
 package com.example.ram.model;
 
+import org.hibernate.annotations.OnDelete;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,7 +17,7 @@ public class ProjectGroup {
     private String agency;
     private String color;
 
-    @OneToMany(mappedBy = "projectGroup")
+    @OneToMany(mappedBy = "projectGroup" , cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<Project> projects;
 
     public ProjectGroup(long id, String agency, String color) {

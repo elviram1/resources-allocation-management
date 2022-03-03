@@ -21,7 +21,7 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String metadata;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_group", referencedColumnName = "id")
     private ProjectGroup projectGroup;
 
