@@ -1,5 +1,8 @@
 package com.example.ram.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -22,15 +25,18 @@ public class Allocation {
     private String metadata;
 
     @ManyToOne
-    @JoinColumn(name = "id_resource", referencedColumnName = "id", insertable=false, updatable=false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_resource", referencedColumnName = "id")
     private Resource resource;
 
     @ManyToOne
-    @JoinColumn(name = "id_resource_followed", referencedColumnName = "id", insertable=false, updatable=false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_resource_followed", referencedColumnName = "id")
     private Resource resourceFollowed;
 
     @ManyToOne
-    @JoinColumn(name = "id_project", referencedColumnName = "id", insertable=false, updatable=false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_project", referencedColumnName = "id")
     private Project project;
 
     public Allocation(long id, Date startDate, Date endDate, int percentageOfEngagement, boolean investment, boolean support, boolean hypothesis, String metadata, Resource resource, Resource resourceFollowed, Project project) {

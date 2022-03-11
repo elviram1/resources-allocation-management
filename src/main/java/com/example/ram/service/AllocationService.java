@@ -18,4 +18,12 @@ public class AllocationService {
         List<Allocation>  allocationList = new ArrayList<>();
         return allocationList = allocationRepository.findAll();
     }
+
+    public void addOrUpdateAllocation(Allocation allocation){
+        allocationRepository.save(allocation);
+    }
+
+    public void deleteAllocation(long id){
+        allocationRepository.deleteById(id);
+    }
 }
