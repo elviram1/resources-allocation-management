@@ -18,4 +18,12 @@ public class ResourceService {
         List<Resource> resourceList = new ArrayList<>();
         return resourceList = resourceRepository.findAll();
     }
+
+    public void addOrUpdateResource(Resource resource){
+        resourceRepository.save(resource);
+    }
+
+    public void deleteResource(long id){
+        resourceRepository.deleteById(id);
+    }
 }
