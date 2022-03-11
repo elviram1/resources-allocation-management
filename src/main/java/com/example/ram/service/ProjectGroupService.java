@@ -3,14 +3,12 @@ package com.example.ram.service;
 import com.example.ram.model.ProjectGroup;
 import com.example.ram.repository.ProjectGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
-import javax.swing.text.html.Option;
+import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 public class ProjectGroupService {
@@ -23,33 +21,26 @@ public class ProjectGroupService {
         return projectGroupList = projectGroupRepository.findAll();
     }
 
-    public void addProjectGroup(ProjectGroup projectGroup){
-        projectGroupRepository.save(projectGroup);
-    }
-/*
-    public void addOrUpdateProjectGroup(long id, ProjectGroup updateProjectGroup){
-        Optional<ProjectGroup> projectGroup = projectGroupRepository.findById(id);
-        if(projectGroup.isPresent()){
-            projectGroup.get().setAgency(updateProjectGroup.getAgency());
-            projectGroup.get().setColor(updateProjectGroup.getColor());
-            projectGroupRepository.save(projectGroup.get());
-        }else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);*/
+    public List<String> getNameProjectGroup(){
+        List<ProjectGroup> projectGroupList = new ArrayList<>();
+        List<String> nameProjectGroup = new ArrayList<>();
+        String agency;
+        projectGroupList = projectGroupRepository.findAll();
+        for(int i=0; i<projectGroupList.size(); i++ ){
+            agency = projectGroupList.get(i).getAgency();
+            nameProjectGroup.add(agency);
+        }
+        return  nameProjectGroup;
 
+    }
 
     public void addOrUpdateProjectGroup(ProjectGroup projectGroup){
         projectGroupRepository.save(projectGroup);
 
     }
 
-    public Optional<ProjectGroup> getProjectGroupById(long id){
-        if(projectGroupRepository.existsById(id)) {
-            return projectGroupRepository.findById(id);
-        }else
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    public void deleteProjectGroup(long id){
+        projectGroupRepository.deleteById(id);
     }
 
-    public void deleteProjectGroup(ProjectGroup projectGroup){
-        projectGroupRepository.delete(projectGroup);
-    }
 }

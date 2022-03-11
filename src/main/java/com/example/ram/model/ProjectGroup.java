@@ -17,7 +17,7 @@ public class ProjectGroup {
     private String agency;
     private String color;
 
-    @OneToMany(mappedBy = "projectGroup" , cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(mappedBy = "projectGroup")
     private Set<Project> projects;
 
     public ProjectGroup(long id, String agency, String color) {

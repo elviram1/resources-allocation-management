@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequestMapping("/project-groups")
 @Controller
@@ -29,6 +28,11 @@ public class ProjectGroupController {
         mav.addObject("projectGroups", projectGroupList);
         return mav;
     }
+    @GetMapping("/nameProjectGroup")
+    public String getNameProjectGroup(Model model){
+        model.addAttribute("nameProjectGroup", projectGroupService.getNameProjectGroup());
+                return "ProjectView";
+    }
 
     @PostMapping("/addOrUpdate")
     public String addProjectGroup(ProjectGroup projectGroup){
@@ -36,9 +40,9 @@ public class ProjectGroupController {
         return "redirect:/project-groups";
     }
 
-    @PostMapping("/delete")
-    public String deleteProjectGroup(ProjectGroup projectGroup){
-        projectGroupService.deleteProjectGroup(projectGroup);
+    @GetMapping("/delete/{id}")
+    public String deleteProjectGroup(@PathVariable Long id){
+        projectGroupService.deleteProjectGroup(id);
         return "redirect:/project-groups";
     }
 
