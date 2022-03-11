@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+
 @Service
 public class ProjectService {
 
@@ -16,4 +17,13 @@ public class ProjectService {
         List<Project> projectList = new ArrayList<>();
         return projectList = projectRepository.findAll();
     }
+
+    public void addOrUpdateProject(Project project){
+        projectRepository.save(project);
+    }
+
+    public void deleteProject(long id){
+        projectRepository.deleteById(id);
+    }
+
 }

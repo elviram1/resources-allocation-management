@@ -24,7 +24,7 @@ public class Project {
     @Column(columnDefinition = "TEXT")
     private String metadata;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "id_group", referencedColumnName = "id")
     private ProjectGroup projectGroup;
