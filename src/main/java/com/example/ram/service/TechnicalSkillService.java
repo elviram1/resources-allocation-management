@@ -18,4 +18,12 @@ public class TechnicalSkillService {
         List<TechnicalSkill> technicalSkillList = new ArrayList<>();
         return technicalSkillList = technicalSkillRepository.findAll();
     }
+
+    public void addOrUpdateTechnicalSkill(TechnicalSkill technicalSkill){
+        technicalSkillRepository.save(technicalSkill);
+    }
+
+    public void deleteTechnicalSkill(long id){
+        technicalSkillRepository.deleteById(id);
+    }
 }

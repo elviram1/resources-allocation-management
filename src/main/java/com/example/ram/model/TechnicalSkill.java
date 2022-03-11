@@ -13,10 +13,10 @@ public class TechnicalSkill {
 
     private String skill;
 
-    @OneToMany(mappedBy = "technicalSkill")
+    @OneToMany(mappedBy = "technicalSkill" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ProjectSkill> projectSkills;
 
-    @OneToMany(mappedBy = "technicalSkill")
+    @OneToMany(mappedBy = "technicalSkill" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ResourceSkill> resourceSkills;
 
     public TechnicalSkill(long id, String skill) {
