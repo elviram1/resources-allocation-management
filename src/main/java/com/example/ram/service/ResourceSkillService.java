@@ -1,6 +1,5 @@
 package com.example.ram.service;
 
-import com.example.ram.model.Resource;
 import com.example.ram.model.ResourceSkill;
 import com.example.ram.repository.ResourceSkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,14 @@ public class ResourceSkillService {
     public List<ResourceSkill> getAllResourceSkill(){
         List<ResourceSkill> resourceSkillList = new ArrayList<>();
         return resourceSkillList = resourceSkillRepository.findAll();
+    }
+
+    public void addOrUpdateResourceSkill(ResourceSkill resourceSkill){
+        resourceSkillRepository.save(resourceSkill);
+    }
+
+    public void deleteResourceSkill(Long id){
+        resourceSkillRepository.deleteResourceSkill(id);
     }
 
 }
