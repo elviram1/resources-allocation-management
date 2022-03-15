@@ -1,35 +1,59 @@
 package com.example.ram.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "project_skill")
 public class ProjectSkill {
-    @EmbeddedId
-    private ProjectSkillKey projectSkillKey;
 
-   // @MapsId("idProject")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
     @ManyToOne
-    @JoinColumn(name = "id_project", referencedColumnName = "id", insertable=false, updatable=false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_skill", referencedColumnName = "id")
+    private TechnicalSkill technicalSkill;
+
+    @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_project", referencedColumnName = "id")
     private Project project;
 
-    @ManyToOne
-    @JoinColumn(name = "id_skill", referencedColumnName = "id", insertable=false, updatable=false)
-    private TechnicalSkill technicalSkill;
+    public ProjectSkill(long id, TechnicalSkill technicalSkill, Project project) {
+        this.id = id;
+        this.technicalSkill = technicalSkill;
+        this.project = project;
+    }
 
     public ProjectSkill() {
 
     }
 
-    public ProjectSkill(ProjectSkillKey projectSkillKey) {
-        this.projectSkillKey = projectSkillKey;
+    public long getId() {
+        return id;
     }
 
-
-    public ProjectSkillKey getProjectSkillId() {
-        return projectSkillKey;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public void setProjectSkillId(ProjectSkillKey projectSkillKey) {
-        this.projectSkillKey = projectSkillKey;
+    public TechnicalSkill getTechnicalSkill() {
+        return technicalSkill;
+    }
+
+    public void setTechnicalSkill(TechnicalSkill technicalSkill) {
+        this.technicalSkill = technicalSkill;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
     }
 }
