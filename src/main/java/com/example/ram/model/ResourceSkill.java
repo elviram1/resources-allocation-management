@@ -1,36 +1,59 @@
 package com.example.ram.model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "resource_skill")
 public class ResourceSkill {
 
-    @EmbeddedId
-    private ResourceSkillKey resourceSkillKey;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_skill", referencedColumnName = "id", insertable=false, updatable=false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_skill", referencedColumnName = "id")
     private TechnicalSkill technicalSkill;
 
     @ManyToOne
-    @JoinColumn(name = "id_resource", referencedColumnName = "id", insertable=false, updatable=false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "id_resource", referencedColumnName = "id")
     private Resource resource;
 
-
-    public ResourceSkill(ResourceSkillKey resourceSkillKey) {
-        this.resourceSkillKey = resourceSkillKey;
+    public ResourceSkill(long id, TechnicalSkill technicalSkill, Resource resource) {
+        this.id = id;
+        this.technicalSkill = technicalSkill;
+        this.resource = resource;
     }
 
     public ResourceSkill() {
 
     }
 
-    public ResourceSkillKey getResourceSkillKey() {
-        return resourceSkillKey;
+    public long getId() {
+        return id;
     }
 
-    public void setResourceSkillKey(ResourceSkillKey resourceSkillKey) {
-        this.resourceSkillKey = resourceSkillKey;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public TechnicalSkill getTechnicalSkill() {
+        return technicalSkill;
+    }
+
+    public void setTechnicalSkill(TechnicalSkill technicalSkill) {
+        this.technicalSkill = technicalSkill;
+    }
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
     }
 }
