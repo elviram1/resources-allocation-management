@@ -12,6 +12,7 @@ public class TechnicalSkill {
     private long id;
 
     private String skill;
+    private String type;
 
     @OneToMany(mappedBy = "technicalSkill" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ProjectSkill> projectSkills;
@@ -19,9 +20,10 @@ public class TechnicalSkill {
     @OneToMany(mappedBy = "technicalSkill" , cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ResourceSkill> resourceSkills;
 
-    public TechnicalSkill(long id, String skill) {
+    public TechnicalSkill(long id, String skill, String type) {
         this.id = id;
         this.skill = skill;
+        this.type = type;
     }
 
     public TechnicalSkill() {
@@ -42,5 +44,13 @@ public class TechnicalSkill {
 
     public void setSkill(String skill) {
         this.skill = skill;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

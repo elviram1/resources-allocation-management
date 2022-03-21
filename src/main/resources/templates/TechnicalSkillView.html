@@ -21,6 +21,7 @@
             <tr>
                 <th>ID</th>
                 <th>Skill</th>
+                <th>Type</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -28,9 +29,10 @@
             <tr th:each="technicalSkill: ${technicalSkills}">
                 <td th:text="${technicalSkill.id}" >id</td>
                 <td th:text="${technicalSkill.skill}">skill</td>
+                <td th:text="${technicalSkill.type}">type</td>
                 <th>
                     <a data-toggle="modal" title="Edit Technical Skill" class="open-edit-modal btn btn-warning" href="#editModal"
-                       th:attr="data-id=${technicalSkill.id}, data-skill=${technicalSkill.skill}">Edit</a>
+                       th:attr="data-id=${technicalSkill.id}, data-skill=${technicalSkill.skill}, data-type=${technicalSkill.type}">Edit</a>
                     <a th:href="@{/technical-skills/delete/{id}(id=${technicalSkill.id})}" class="btn btn-danger" id="deleteButton">Delete</a>
                 </th>
             </tr>
@@ -52,6 +54,15 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Skill:</label>
                                 <input type="text" class="form-control" id="recipient-name" name="skill">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Type:</label>
+                                <select class="form-control" id="type" name="type">
+                                    <option value="">Select Type</option>
+                                    <option value="BE">BE</option>
+                                    <option value="FE">FE</option>
+                                    <option value="BE/FE">BE/FE</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -82,6 +93,15 @@
                             <div class="form-group">
                                 <label for="recipient-name" class="col-form-label">Skill</label>
                                 <input type="text" class="form-control" id="editTechnicalSkillSkill" name="skill">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Type:</label>
+                                <select class="form-control" id="editType" name="type">
+                                    <option value="">Select Type</option>
+                                    <option value="BE">BE</option>
+                                    <option value="FE">FE</option>
+                                    <option value="BE/FE">BE/FE</option>
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
