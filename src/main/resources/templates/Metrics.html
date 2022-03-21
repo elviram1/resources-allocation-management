@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+
+    <body>
+        <div th:replace="fragments :: menu"></div>
+        <div class="container my-4">
+            <div class="row">
+                <div class="col">
+                    <h5>Resources Level </h5>
+                    <canvas id="pieChartLevel"></canvas>
+                </div>
+                <div class="col">
+                    <h5>Unallocated Resources<span class="badge badge-secondary ml-3"  id="count-unallocated-resources">New</span></h5>
+                    <table id="unallocated-resources" class="table my-4">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                                <th>Surname</th>
+                                <th>Initials</th>
+                                <th>Level</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <h5>Resources in internship<span class="badge badge-secondary ml-3"  id="count-resources-in-internship">New</span></h5>
+                    <table id="resources-in-internship" class="table my-4">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>Initials</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col">
+                    <h5>Backend Frontend</h5>
+                    <canvas id="chartBackendFrontend"></canvas>
+                </div>
+                <div class="col">
+                    <table id="technical-skill" class="table table-wrapper-scroll-y my-custom-scrollbar my-4">
+                        <thead>
+                        <tr>
+                            <th>Technical Skill</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script th:inline="javascript">
+        const resources = [[${resources}]];
+        const allocations = [[${allocations}]];
+        const technicalSkills = [[${technicalSkills}]];
+        const resourceSkills = [[${resourceSkill}]];
+    </script>
+    <script src="../static/Metrics.js" th:src="@{/Metrics.js}"></script>
+
+</html>
