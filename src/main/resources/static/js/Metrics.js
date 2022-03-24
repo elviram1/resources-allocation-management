@@ -23,7 +23,7 @@
             data: [juniorCount, intermediateCount, seniorCount, internship],
             backgroundColor: [
                 'rgb(255, 205, 86)',
-                'rgb(54, 162, 235)',
+                'rgb(255, 165, 0)',
                 'rgb(247,70,74)',
                 'rgb(156, 156, 156)'
             ],
