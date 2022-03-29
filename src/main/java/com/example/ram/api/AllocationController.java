@@ -45,6 +45,11 @@ public class AllocationController {
         allocationService.addOrUpdateAllocation(allocation);
         return "redirect:/allocations";
     }
+    @PostMapping("/add-project-allocation")
+    public String addAllocationInProjectAllocationView(Allocation allocation){
+        allocationService.addOrUpdateAllocation(allocation);
+        return "redirect:/project-allocation";
+    }
 
     @GetMapping("/delete/{id}")
     public String deleteAllocation(@PathVariable Long id){
