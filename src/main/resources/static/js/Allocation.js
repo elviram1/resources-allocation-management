@@ -7,7 +7,7 @@ $('document').ready(function () {
         $(".modal-body #editResourceFollowed").val($(this).data('resourcefollowed'));
         $(".modal-body #editStartDate").val($(this).data('startdate'));
         $(".modal-body #editEndDate").val($(this).data('enddate'));
-        $(".modal-body #editPercentageOfEngagement").val($(this).data('percentageofengagement'));
+        $(".modal-body #editAllocatedHours").val($(this).data('allocatedhours'));
         $(".modal-body #editSupport").val($(this).data('support'));
         $(".modal-body #editInvestment").val($(this).data('investment'));
         $(".modal-body #editHypothesis").val($(this).data('hypothesis'));

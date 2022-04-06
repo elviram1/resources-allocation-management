@@ -23,7 +23,7 @@
             <th>ID resource followed</th>
             <th>Start Data</th>
             <th>End Data</th>
-            <th>Percentage of engagement</th>
+            <th>Allocated Hours</th>
             <th>Support</th>
             <th>Investment</th>
             <th>Hypothesis</th>
@@ -39,7 +39,7 @@
             <td th:text="${allocation?.resourceFollowed?.id}" ></td>
             <td th:text="${allocation.startDate}" ></td>
             <td th:text="${allocation.endDate}" ></td>
-            <td th:text="${allocation.percentageOfEngagement}" ></td>
+            <td th:text="${allocation.allocatedHours}" ></td>
             <td th:text="${allocation.support}"></td>
             <td th:text="${allocation.investment}"></td>
             <td th:text="${allocation.hypothesis}"></td>
@@ -47,7 +47,7 @@
             <th>
                 <a data-toggle="modal" title="Edit Allocation" class="open-edit-modal btn btn-warning" href="#editModal"
                 th:attr="data-id=${allocation.id}, data-project=${allocation?.project?.id}, data-resource=${allocation.resource.id}, data-resourceFollowed=${allocation?.resourceFollowed?.id},
-                data-startDate=${allocation.startDate}, data-endDate=${allocation.endDate}, data-percentageOfEngagement=${allocation.percentageOfEngagement},
+                data-startDate=${allocation.startDate}, data-endDate=${allocation.endDate}, data-allocatedHours=${allocation.allocatedHours},
                 data-support=${allocation.support}, data-investment=${allocation.investment}, data-hypothesis=${allocation.hypothesis}, data-metadata=${allocation.metadata}">Edit</a>
                 <a th:href="@{/allocations/delete/{id}(id=${allocation.id})}" class="btn btn-danger" id="deleteButton">Delete</a>
             </th>
@@ -90,15 +90,15 @@
                         </div>
                         <div class="form-group">
                             <label for="startDate" class="col-form-label">Start date:</label>
-                            <input type="text" class="form-control" id="startDate" name="startDate">
+                            <input type="date" class="form-control" id="startDate" name="startDate">
                         </div>
                         <div class="form-group">
                             <label for="endDate" class="col-form-label">End date</label>
-                            <input type="text" class="form-control" id="endDate" name="endDate">
+                            <input type="date" class="form-control" id="endDate" name="endDate">
                         </div>
                         <div class="form-group">
-                            <label for="percentageOfEngagement" class="col-form-label">Percentage Of Engagement:</label>
-                            <input type="text" class="form-control" id="percentageOfEngagement" name="percentageOfEngagement">
+                            <label for="allocatedHours" class="col-form-label">Allocated Hours:</label>
+                            <input type="text" class="form-control" id="allocatedHours" name="allocatedHours">
                         </div>
                         <div class="form-group">
                             <label for="support" class="col-form-label">Support:</label>
@@ -165,15 +165,15 @@
                         </div>
                         <div class="form-group">
                             <label for="editStartDate" class="col-form-label">Start date:</label>
-                            <input type="text" class="form-control" id="editStartDate" name="startDate">
+                            <input type="date" class="form-control" id="editStartDate" name="startDate">
                         </div>
                         <div class="form-group">
                             <label for="editEndDate" class="col-form-label">End date</label>
-                            <input type="text" class="form-control" id="editEndDate" name="endDate">
+                            <input type="date" class="form-control" id="editEndDate" name="endDate">
                         </div>
                         <div class="form-group">
-                            <label for="editPercentageOfEngagement" class="col-form-label">Percentage Of Engagement:</label>
-                            <input type="text" class="form-control" id="editPercentageOfEngagement" name="percentageOfEngagement">
+                            <label for="editAllocatedHours" class="col-form-label">Allocated Hours:</label>
+                            <input type="text" class="form-control" id="editAllocatedHours" name="allocatedHours">
                         </div>
                         <div class="form-group">
                             <label for="editSupport" class="col-form-label">Support:</label>

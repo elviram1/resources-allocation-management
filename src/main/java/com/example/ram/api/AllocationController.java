@@ -56,4 +56,10 @@ public class AllocationController {
         allocationService.deleteAllocation(id);
         return "redirect:/allocations";
     }
+
+    @GetMapping("/delete-project-allocation/{id}")
+    public String deleteAllocationInProjectAllocationView(@PathVariable Long id){
+        allocationService.deleteAllocation(id);
+        return "redirect:/project-allocation";
+    }
 }

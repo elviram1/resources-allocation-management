@@ -16,7 +16,7 @@ public class Allocation {
 
     private Date startDate;
     private Date endDate;
-    private int percentageOfEngagement;
+    private int allocatedHours;
     private boolean investment;
     private boolean support;
     private boolean hypothesis;
@@ -43,7 +43,7 @@ public class Allocation {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.percentageOfEngagement = percentageOfEngagement;
+        this.allocatedHours = percentageOfEngagement;
         this.investment = investment;
         this.support = support;
         this.hypothesis = hypothesis;
@@ -81,12 +81,12 @@ public class Allocation {
         this.endDate = endDate;
     }
 
-    public int getPercentageOfEngagement() {
-        return percentageOfEngagement;
+    public int getAllocatedHours() {
+        return allocatedHours;
     }
 
-    public void setPercentageOfEngagement(int percentageOfEngagement) {
-        this.percentageOfEngagement = percentageOfEngagement;
+    public void setAllocatedHours(int allocatedHours) {
+        this.allocatedHours = allocatedHours;
     }
 
     public boolean isInvestment() {
