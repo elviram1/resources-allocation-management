@@ -13,10 +13,157 @@
 
     <body>
         <div th:replace="fragments :: menu"></div>
-        <h3>Project Allocations</h3>
-        <div id="table-project-group" class="ml-3 mt-3"></div>
+        <h3>Project allocations</h3>
+        <div id="container-projects-groups" class="ml-3 mt-3"></div>
+        <div id="resources-list" class="ml-3 mt-3">
+            <h3>Resources</h3>
+            <div id="resources-senior"></div>
+            <div id="resources-intermediate"></div>
+            <div id="resources-junior"></div>
+            <div id="resources-internship"></div>
+        </div>
+        <div id="available-resources" class="ml-3 mt-5">
+            <h3>Available resources</h3>
+        </div>
 
+        <!-- Add Allocation modal  -->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form th:action="@{/allocations/add-project-allocation}" method="post">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addModalLabel">New Allocation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input  type="hidden" class="form-control" id="project" name="project">
+                            </div>
+                            <div class="form-group">
+                                <label for="projectName" class="col-form-label">Project:</label>
+                                <input  type="text" class="form-control" id="projectName" name="projectName" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="availableResources" class="col-form-label">Resource:</label>
+                                <select class="form-control" onchange="myFunction(event)" id="availableResources" name="resource" required></select>
+                            </div>
+                            <div class="form-group">
+                                <label for="startDateAllocation" class="col-form-label">Start date:</label>
+                                <input type="date" class="form-control" id="startDateAllocation" name="startDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="endDateAllocation" class="col-form-label">End date</label>
+                                <input type="date" class="form-control" id="endDateAllocation" name="endDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="allocatedHours" class="col-form-label">Allocated Hours:</label>
+                                <input type="text" class="form-control" id="allocatedHours" name="allocatedHours" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="support" class="col-form-label">Support:</label>
+                                <input type="text" th:value="false"  class="form-control" id="support" name="support" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="investment" class="col-form-label">Investment:</label>
+                                <input type="text" th:value="false"  class="form-control" id="investment" name="investment" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="hypothesis" class="col-form-label">Hypothesis:</label>
+                                <input type="text" th:value="false" class="form-control" id="hypothesis" name="hypothesis" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="metadata" class="col-form-label">Metadata:</label>
+                                <input type="text" class="form-control" id="metadataAllocation" name="metadataAllocation">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--Delete Allocation modal -->
+        <div class="modal" tabindex="-1" role="dialog" id="deleteModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Delete Allocation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="" class="btn btn-primary" id="delRef">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Minimenu allocation -->
+        <div class="allocation-menu" style="display: none">
+            <!-- TODO <button>Edit</button><br>-->
+            <button type='button' class='delete-allocation'>Delete</button>
+        </div>
     </body>
+
+    <!-- Add project modal-->
+    <div class="modal fade" id="addProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <form th:action="@{/projects/add}" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addProjectLabel">New Project</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <input  type="hidden" class="form-control" id="projectGroupId" name="projectGroup">
+                        </div>
+                        <div class="form-group">
+                            <label for="projectName" class="col-form-label">Project Group:</label>
+                            <input  type="text" class="form-control" id="projectGroupAgency" name="projectGroupAgency" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Project name:</label>
+                            <input type="text" class="form-control" id="recipient-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Start date:</label>
+                            <input type="date" class="form-control" id="startDate" name="startDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">End date</label>
+                            <input type="date" class="form-control" id="endDate" name="endDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">FTE required:</label>
+                            <input type="text" class="form-control" id="fteRequired" name="fteRequired" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Metadata:</label>
+                            <input type="text" class="form-control" id="metadata" name="metadata">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 
     <script th:inline="javascript">
         const resources = [[${resources}]];

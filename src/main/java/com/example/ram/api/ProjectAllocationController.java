@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-@RequestMapping("/project-allocation")
+@RequestMapping({"/project-allocation", "/"})
 @Controller
 public class ProjectAllocationController {
 

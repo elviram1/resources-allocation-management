@@ -12,9 +12,13 @@ table{
     text-align: center;
     font-weight: bold;
 }
+.button-project-group{
+    border: aliceblue;
+    margin-right: 5px;
+}
 
 .nameProject{
-    width: 150px;
+    width: 160px;
     border-radius: 10px;
     text-align: center;
 }
@@ -24,4 +28,34 @@ span.block {
     text-align: center;
     border-radius: 16px;
     background-color: #ddd;
+    font-size: small;
+    position: relative;
+    margin-top: -15px;
+    left: auto;
+    right: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 35px;
+}
+
+#container-projects-groups{
+    float: left;
+    height: 100%;
+}
+
+#resources-list{
+    float:right;
+    height: 100%;
+    width:50%;
+}
+#available-resources{
+    float:right;
+    height: 100%;
+    width:50%;
+
+}
+
+.delete-allocation{
+    text-align: center;
+    border-radius: 20%;
 }
