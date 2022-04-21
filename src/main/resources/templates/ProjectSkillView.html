@@ -52,14 +52,14 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="project" class="col-form-label">Project</label>
-                                <select class="form-control" id="project" name="project">
+                                <select class="form-control" id="project" name="project" required>
                                     <option value="">Select Project</option>
                                     <option th:each="project: ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="technicalSkill"  class="col-form-label">Technical Skill:</label>
-                                <select class="form-control" id="technicalSkill" name="technicalSkill">
+                                <select class="form-control" id="technicalSkill" name="technicalSkill" required>
                                     <option value="">Select Technical Skill</option>
                                     <option th:each="technicalSkill: ${technicalSkills}" th:value="${technicalSkill.id}" th:text="${technicalSkill.skill}"></option>
                                 </select>
@@ -92,14 +92,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="editProject" class="col-form-label">Project</label>
-                                <select class="form-control" id="editProject" name="project">
+                                <select class="form-control" id="editProject" name="project" required>
                                     <option value="">Select Project</option>
                                     <option th:each="project: ${projects}" th:value="${project.id}" th:text="${project.name}"></option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="editTechnicalSkill"  class="col-form-label">Technical Skill:</label>
-                                <select class="form-control" id="editTechnicalSkill" name="technicalSkill">
+                                <select class="form-control" id="editTechnicalSkill" name="technicalSkill" required>
                                     <option value="">Select Technical Skill</option>
                                     <option th:each="technicalSkill: ${technicalSkills}" th:value="${technicalSkill.id}" th:text="${technicalSkill.skill}"></option>
                                 </select>

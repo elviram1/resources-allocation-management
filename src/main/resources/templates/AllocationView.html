@@ -76,7 +76,7 @@
                         </div>
                         <div class="form-group">
                             <label for="resource" class="col-form-label">Resource:</label>
-                            <select class="form-control" id="resource" name="resource">
+                            <select class="form-control" id="resource" name="resource" required>
                                 <option value="">Select Resource</option>
                                 <option th:each="resource: ${resources}" th:value="${resource.id}" th:text="${resource.surname}+' '+${resource.name}"></option>
                             </select>
@@ -90,7 +90,7 @@
                         </div>
                         <div class="form-group">
                             <label for="startDate" class="col-form-label">Start date:</label>
-                            <input type="date" class="form-control" id="startDate" name="startDate">
+                            <input type="date" class="form-control" id="startDate" name="startDate" required>
                         </div>
                         <div class="form-group">
                             <label for="endDate" class="col-form-label">End date</label>
@@ -98,19 +98,19 @@
                         </div>
                         <div class="form-group">
                             <label for="allocatedHours" class="col-form-label">Allocated Hours:</label>
-                            <input type="text" class="form-control" id="allocatedHours" name="allocatedHours">
+                            <input type="text" class="form-control" id="allocatedHours" name="allocatedHours" required>
                         </div>
                         <div class="form-group">
                             <label for="support" class="col-form-label">Support:</label>
-                            <input type="text" class="form-control" id="support" name="support">
+                            <input type="text" class="form-control" id="support" name="support" required>
                         </div>
                         <div class="form-group">
                             <label for="investment" class="col-form-label">Investment:</label>
-                            <input type="text" class="form-control" id="investment" name="investment">
+                            <input type="text" class="form-control" id="investment" name="investment" required>
                         </div>
                         <div class="form-group">
                             <label for="hypothesis" class="col-form-label">Hypothesis:</label>
-                            <input type="text" class="form-control" id="hypothesis" name="hypothesis">
+                            <input type="text" class="form-control" id="hypothesis" name="hypothesis" required>
                         </div>
                         <div class="form-group">
                             <label for="metadata" class="col-form-label">Metadata:</label>
@@ -151,9 +151,9 @@
                         </div>
                         <div class="form-group">
                             <label for="editResource" class="col-form-label">Resource:</label>
-                            <select class="form-control" id="editResource" name="resource">
-                                <option value="">Select Resource</option>
-                                <option th:each="resource: ${resources}" th:value="${resource.id}" th:text="${resource.surname}+' '+${resource.name}"></option>
+                            <select class="form-control" id="editResource" name="resource" required>
+                                <option value="" >Select Resource</option>
+                                <option th:each="resource: ${resources}" th:value="${resource.id}" th:text="${resource.surname}+' '+${resource.name}" ></option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -165,7 +165,7 @@
                         </div>
                         <div class="form-group">
                             <label for="editStartDate" class="col-form-label">Start date:</label>
-                            <input type="date" class="form-control" id="editStartDate" name="startDate">
+                            <input type="date" class="form-control" id="editStartDate" name="startDate" required>
                         </div>
                         <div class="form-group">
                             <label for="editEndDate" class="col-form-label">End date</label>
@@ -173,19 +173,19 @@
                         </div>
                         <div class="form-group">
                             <label for="editAllocatedHours" class="col-form-label">Allocated Hours:</label>
-                            <input type="text" class="form-control" id="editAllocatedHours" name="allocatedHours">
+                            <input type="text" class="form-control" id="editAllocatedHours" name="allocatedHours" required>
                         </div>
                         <div class="form-group">
                             <label for="editSupport" class="col-form-label">Support:</label>
-                            <input type="text" class="form-control" id="editSupport" name="support">
+                            <input type="text" class="form-control" id="editSupport" name="support" required>
                         </div>
                         <div class="form-group">
                             <label for="editInvestment" class="col-form-label">Investment:</label>
-                            <input type="text" class="form-control" id="editInvestment" name="investment">
+                            <input type="text" class="form-control" id="editInvestment" name="investment" required>
                         </div>
                         <div class="form-group">
                             <label for="editHypothesis" class="col-form-label">Hypothesis:</label>
-                            <input type="text" class="form-control" id="editHypothesis" name="hypothesis">
+                            <input type="text" class="form-control" id="editHypothesis" name="hypothesis" required>
                         </div>
                         <div class="form-group">
                             <label for="editMetadata" class="col-form-label">Metadata:</label>
