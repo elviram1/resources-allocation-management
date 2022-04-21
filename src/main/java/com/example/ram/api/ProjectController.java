@@ -41,6 +41,12 @@ public class ProjectController {
         return "redirect:/projects";
     }
 
+    @PostMapping("/add")
+    public String addInProjectAllocationView(Project project){
+        projectService.addOrUpdateProject(project);
+        return "redirect:/project-allocation";
+    }
+
    @GetMapping("/delete/{id}")
     public  String deleteProject(@PathVariable Long id){
         projectService.deleteProject(id);
