@@ -11,27 +11,63 @@
 
     <body>
         <div th:replace="fragments :: menu"></div>
-        <div class="container my-4">
-            <div class="row">
-                <div class="col">
+        <div class="my-4">
+            <div class="row justify-content-md-center">
+                <div class="col-sm-3 mr-5">
                     <h5>Resources Level </h5>
                     <canvas id="pieChartLevel"></canvas>
                 </div>
-                <div class="col">
+                <div class="col-sm-4">
                     <h5>Unallocated Resources<span class="badge badge-secondary ml-3"  id="count-unallocated-resources">New</span></h5>
                     <table id="unallocated-resources" class="table my-4">
                         <thead>
                         <tr>
                             <th>Name</th>
-                                <th>Surname</th>
-                                <th>Initials</th>
-                                <th>Level</th>
+                            <th>Surname</th>
+                            <th>Initials</th>
+                            <th>Level</th>
+                            <th>Daily hours</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </div>
-                <div class="col">
+
+            </div>
+            <div class="row justify-content-md-center my-5">
+                <div class="col-sm-3 mr-5">
+                    <h5>Backend Frontend</h5>
+                    <canvas id="chartBackendFrontend"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Technical Skill</h5>
+                    <table id="technical-skill" class="table table-wrapper-scroll-y my-custom-scrollbar my-4">
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row justify-content-md-center my-5">
+                <div class="col-sm-3 mr-5">
+                    <h5>Project Groups</h5>
+                    <canvas id="pieChartProjectGroups"></canvas>
+                </div>
+                <div class="col-sm-4">
+                    <h5>Project</h5>
+                    <table id="project-table" class="table table-wrapper-scroll-y my-custom-scrollbar my-4">
+                        <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>FTE required</th>
+                            <th>FTE allocated</th>
+                        </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="row justify-content-md-center my-5">
+                <div class="col-md-8">
                     <h5>Resources in internship<span class="badge badge-secondary ml-3"  id="count-resources-in-internship">New</span></h5>
                     <table id="resources-in-internship" class="table my-4">
                         <thead>
@@ -39,29 +75,13 @@
                             <th>Name</th>
                             <th>Surname</th>
                             <th>Initials</th>
+                            <th>Daily hours</th>
+                            <th>Tutor</th>
+                            <th> Start date</th>
                         </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
-                </div>
-            </div>
-            <div class="row my-5">
-                <div class="col">
-                    <h5>Backend Frontend</h5>
-                    <canvas id="chartBackendFrontend"></canvas>
-                </div>
-                <div class="col">
-                    <table id="technical-skill" class="table table-wrapper-scroll-y my-custom-scrollbar my-4">
-                        <thead>
-                        <tr>
-                            <th>Technical Skill</th>
-                        </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <div class="col">
-
                 </div>
             </div>
         </div>
@@ -72,6 +92,8 @@
         const allocations = [[${allocations}]];
         const technicalSkills = [[${technicalSkills}]];
         const resourceSkills = [[${resourceSkill}]];
+        const projects = [[${projects}]];
+        const projectGroups = [[${projectGroups}]];
     </script>
     <script src="../static/js/Metrics.js" th:src="@{/js/Metrics.js}"></script>
 
