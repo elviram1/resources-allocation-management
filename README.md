@@ -1,7 +1,9 @@
 # resources-allocation-management
 ### Spring Boot web application for resources allocation management.
 
-Used Spring Boot for the back-end (REST API web services), Thymeleaf as java template engine to convert the interaction between Java classes and html/xml models, Hibernated as ORM for mapping of Java classes in tables of a relational database.
+- Used Spring Boot for the back-end (REST API web services), 
+- Thymeleaf as java template engine to convert the interaction between Java classes and html/xml models, 
+- Hibernated as ORM for mapping of Java classes in tables of a relational database.
 <br>
 <br>
 <br>
